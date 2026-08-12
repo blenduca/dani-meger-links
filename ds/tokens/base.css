@@ -1,0 +1,19 @@
+/* ⚠️ CÓPIA ESPELHADA do design system — NÃO editar aqui.
+   Fonte da verdade: clientes/cliente-daniele-meger/recursos/design-system/sistema/tokens/
+   Copiado em 2026-07-29. Mudou lá, copiar de novo (este ativo é estático puro e
+   publica sozinho, então não há como importar de fora da pasta do deploy).
+   Editar esta cópia é o drift silencioso que a padrao-design-system.md proíbe. */
+
+/* MEGER — ponto de entrada dos tokens.
+   Arquivo so com @import, conforme padrao-design-system.md.
+
+   Uso no ativo:
+     @import "<caminho>/recursos/design-system/sistema/tokens/base.css";
+
+   Depois disso, PROIBIDO hex e px crus — sempre var(--token).
+   Valor sem token e sinal de que falta token, nao licenca para hard-coded. */
+
+@import "./colors.css";
+@import "./typography.css";
+@import "./spacing.css";
+@import "./effects.css";

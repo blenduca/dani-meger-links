@@ -1,0 +1,47 @@
+/* ⚠️ CÓPIA ESPELHADA do design system — NÃO editar aqui.
+   Fonte da verdade: clientes/cliente-daniele-meger/recursos/design-system/sistema/tokens/
+   Copiado em 2026-07-29. Mudou lá, copiar de novo (este ativo é estático puro e
+   publica sozinho, então não há como importar de fora da pasta do deploy).
+   Editar esta cópia é o drift silencioso que a padrao-design-system.md proíbe. */
+
+/* MEGER — tipografia. Fonte dos valores.
+   Origem: deck da Unity, slides "Tipografia".
+
+   Fraunces: Google Fonts, licenca SIL Open Font — livre, inclusive comercial.
+   Racional da agencia: serifa elegante de traco fino, que comunica PERMANENCIA e
+   PATRIMONIO em vez de urgencia ou modismo tech, mas sem o peso de uma serifa
+   bancaria. Espacamento generoso entre letras reforca o pilar "clareza".
+
+   ⚠️ Verdana e FONTE DE SISTEMA e e o unico ponto do universo visual que destoa do
+   padrao premium do resto. Esta aqui porque e o que a marca definiu — a decisao de
+   manter ou trocar precisa sair ANTES da primeira peca digital. Ver fontes/indice.md.
+
+   Nao ha @font-face aqui: binario de fonte nao entra no repo. */
+:root {
+  --body:    Verdana, Geneva, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --mono:    ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+
+  /* Escala — DERIVADA pela PotenZIA. O deck e apresentacao e nao define escala.
+     Piso de 12px: nada abaixo disso, em nenhuma hipotese. */
+  --fs-xs:   0.75rem;    /* 12px — piso absoluto, so eyebrow/rotulo curto */
+  --fs-sm:   0.875rem;   /* 14px */
+  --fs-base: 1rem;       /* 16px — minimo para texto corrido */
+  --fs-lg:   1.125rem;   /* 18px */
+  --fs-xl:   1.375rem;   /* 22px */
+  --fs-2xl:  2rem;       /* 32px */
+  --fs-3xl:  clamp(2.25rem, 5.5vw, 3.5rem);
+
+  --fw-normal:   400;
+  --fw-medium:   500;
+  --fw-semibold: 600;    /* peso do display no deck (Fraunces SemiBold Italic) */
+  --fw-bold:     700;
+
+  /* "nada apertado" e regra de marca, nao gosto: o tracking positivo em titulo e
+     eyebrow e o que traduz o pilar clareza. */
+  --tracking-display: 0.01em;
+  --tracking-eyebrow: 0.18em;
+  --lh-tight: 1.12;
+  --lh-body:  1.65;
+  --measure:  66ch;      /* 60–70 caracteres */
+}

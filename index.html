@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Dani Meger · MEGER — Clínica Financeira para médicos</title>
+  <meta name="description"
+    content="Diagnóstico gratuito do seu comportamento financeiro, mentoria por processo seletivo e contato direto. Para médicos que faturam alto e não veem o patrimônio crescer.">
+  <link rel="canonical" href="https://links.danielemeger.com.br/">
+
+  <!-- 🔴 A CORREÇÃO DE MAIOR ALAVANCA DESTA PÁGINA.
+     A versão em produção não tem NENHUMA meta tag além de charset e viewport:
+     conferido ao vivo, `curl` devolve zero `og:`. Como esta é a página que a
+     bio do Instagram aponta, toda vez que alguém compartilha o link no
+     WhatsApp, no Instagram ou no LinkedIn a prévia sai EM BRANCO.
+     ⚠️ og:image em JPEG de propósito — WhatsApp e Facebook não previsualizam
+     WebP com confiabilidade, e este link circula justamente em WhatsApp. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://links.danielemeger.com.br/">
+  <meta property="og:title" content="Dani Meger · MEGER — Clínica Financeira">
+  <meta property="og:description"
+    content="Você fatura como poucos. E ainda assim o dinheiro não fica. Comece pelo diagnóstico gratuito.">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="MEGER · Clínica Financeira">
+  <!-- TODO(v2.1): og:image (1200x630, .jpg) — precisa da arte, que não existe ainda. -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dani Meger · MEGER — Clínica Financeira">
+  <meta name="twitter:description" content="Você fatura como poucos. E ainda assim o dinheiro não fica.">
+
+  <link rel="icon" type="image/png" href="assets/simbolo-mascara.png">
+
+  <!-- Fontes da marca, servidas daqui. Nada sai para o Google: menos uma
+     dependência de terceiro no caminho crítico e o IP do visitante não vaza.
+     O preload é o que faz a fonte começar a baixar junto do CSS, e não depois. -->
+  <link rel="preload" href="ds/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="ds/fonts/fontes.css">
+  <link rel="stylesheet" href="estilo.css">
+
+  <!-- ⚠️ AQUI A PÁGINA DEIXA DE SER ZERO-JS, E A DECISÃO É DO CLIENTE.
+     O botão primário é o mesmo `specular-button` da LP do DNA Financeiro —
+     um shader WebGL — e foi pedido "exatamente do mesmo jeito que é lá",
+     incluindo o import de `ogl` por CDN (esm.sh). Duas consequências que
+     ficam registradas porque contradizem decisões anteriores DESTE arquivo:
+     · o cabeçalho do estilo.css defende ZERO JAVASCRIPT;
+     · as fontes são auto-hospedadas de propósito, para nenhum terceiro ver
+       o IP do visitante — e o esm.sh passa a ver, no CTA principal.
+     O que NÃO se perde: sem JS (ou sem WebGL, ou se o CDN cair) o botão
+     continua sendo um botão dourado legível com o rótulo no HTML. O shader
+     só acrescenta o brilho de borda por cima. Nenhum link depende disso. -->
+  <link rel="preconnect" href="https://esm.sh" crossorigin>
+  <link rel="stylesheet" href="assets/specular-button.css">
+  <script type="module" src="assets/specular-button.js"></script>
+</head>
+
+<body>
+
+  <div class="pagina">
+
+    <header class="envelope cabecalho">
+      <!-- Logo = mesmo lockup (ícone + wordmark) do cabeçalho da LP do DNA
+         Financeiro (blenduca-design/dani-meger-dna-financeiro), consumindo o
+         idêntico assets/simbolo-mascara.png já usado nesta página. -->
+      <span class="marca" aria-label="MEGER, Clínica Financeira">
+        <span class="simbolo" aria-hidden="true"></span>
+        <span class="marca__texto">
+          <span class="marca__nome">MEGER</span>
+          <span class="marca__descritor">Clínica Financeira</span>
+        </span>
+      </span>
+      <p class="cabecalho__lide">Não é sobre apenas ganhar mais. É sobre <em>parar de perder dinheiro
+          sem perceber</em>. Escolha por onde começar:</p>
+      <ul class="credenciais">
+        <li class="sobretitulo">24 anos dentro do sistema financeiro</li>
+        <li class="sobretitulo">400+ famílias de profissionais da saúde</li>
+      </ul>
+    </header>
+
+    <main class="envelope pilha">
+
+      <!-- ===== 1 · DIAGNÓSTICO (herói) ==================================
+         É o herói porque é a entrada natural de tráfego frio vindo da bio:
+         gratuito, sem compromisso e termina num diagnóstico que a pessoa lê na
+         hora. A mentoria pede aplicação e vem depois. -->
+      <section class="heroi" aria-label="Diagnóstico DNA Financeiro">
+        <div class="heroi__corpo">
+          <h2 class="cartao__titulo">Descubra o que faz o seu dinheiro sair sem você perceber</h2>
+          <p class="cartao__texto">O DNA Financeiro cruza como você executa e por que você decide, e
+            devolve um entre nove perfis — com a sua sangria invisível e o primeiro movimento a fazer.
+            Resultado na tela, na hora.</p>
+          <div class="heroi__acoes">
+            <!-- Botão primário da LP, portado 1:1: mesmas classes, mesmo
+               `data-sb` e mesmas custom properties inline (é assim que o
+               componente é configurado lá). Só a copy é a desta página. -->
+            <a class="specular-button specular-button--lg"
+              href="https://dnafinanceiro.danielemeger.com.br/?utm_source=linktree&amp;utm_medium=bio&amp;utm_campaign=dna-financeiro&amp;utm_content=heroi"
+              data-sb='{"radius":60,"lineColor":"#E0BD7A","baseColor":"#D1A45E","intensity":3,"shineSize":5,"shineFade":40,"thickness":1,"speed":1.5,"followMouse":false,"proximity":250,"autoAnimate":true}'
+              style="--sb-radius:60px; --sb-blur:0px; --sb-text-color:#F0E7D4; background:#A77229;">
+              <span class="specular-button__fx" aria-hidden="true"></span>
+              <span class="specular-button__label">Fazer o diagnóstico</span>
+            </a>
+          </div>
+        </div>
+        <!-- Mesma forma da hero da LP Mente Médica Milionária
+           (blenduca-design/dani-meger-mente-medica, `.heroi__figura` + `.arco`):
+           moldura que abraça — topo em arco, base quadrada, herdada da
+           proporção do símbolo. Mesma foto que já estava parada em assets/. -->
+        <figure class="heroi__figura">
+          <img class="arco" src="assets/dani-palco.webp" alt="Dani Meger, estrategista financeira de médicos"
+            width="1380" height="1725" fetchpriority="high" decoding="async">
+        </figure>
+      </section>
+
+      <!-- ===== 2 · MENTORIA MMM ======================================== -->
+      <!-- ⚠️ DESTINO PROVISÓRIO. A v2 da LP da Mentoria está construída e NÃO
+         publicada (falta acesso a Vercel/DNS), e o protótipo antigo vive num
+         github.io que serve a marca legada. Até a v2 subir, o link vai para o
+         WhatsApp com o texto de aplicação — que é o que a página antiga já
+         fazia e é honesto: aplicação seletiva começa por conversa.
+         TODO(v2.1): apontar para a LP quando ela tiver domínio. -->
+      <a class="faixa faixa--marrom" href="https://clinicafinanceira.danielemeger.com.br/"
+        aria-label="Mentoria Mente Médica Milionária — aplicar pelo WhatsApp">
+        <div class="faixa__corpo">
+          <h2 class="faixa__titulo">Mente Médica<br>Milionária</h2>
+          <p class="faixa__texto">Acompanhamento para médicos com consultório que querem transformar
+            faturamento em <b>patrimônio protegido</b>. Finanças, gestão e marca na mesma mesa.</p>
+          <!-- Botão secundário da LP. Continua sendo <span>: o cartão inteiro já
+             é o link, e link dentro de link não existe em HTML. -->
+          <span class="botao botao--secundario faixa__cta">Aplicar para a mentoria <span
+              aria-hidden="true">→</span></span>
+          <span class="faixa__nota">Análise individual · não é ordem de chegada</span>
+        </div>
+      </a>
+
+      <!-- ===== 3 · FALAR DIRETO ======================================== -->
+      <a class="faixa faixa--dourada"
+        href="https://wa.me/5511941335119?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20de%20links%20e%20gostaria%20de%20conversar."
+        aria-label="Falar com a equipe da Dani no WhatsApp">
+        <div class="faixa__corpo faixa__corpo--sem-foto">
+          <h2 class="faixa__titulo">Prefere<br>conversar antes?</h2>
+          <p class="faixa__texto">Dúvida sobre a mentoria, sobre o diagnóstico ou sobre a estrutura da
+            sua clínica. Fale com a equipe e alguém te responde.</p>
+          <span class="botao botao--secundario faixa__cta">Chamar no WhatsApp <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+    </main>
+
+    <!-- ===== RODAPÉ ==================================================
+       Mesmo conteúdo e estrutura do rodapé completo da LP do DNA Financeiro
+       (blenduca-design/dani-meger-dna-financeiro, `.rodape--completo`):
+       marca + descrição à esquerda, redes em pílulas à direita, barra de
+       copyright embaixo. A seção "Onde ela publica" saiu daqui de dentro —
+       o título e as redes viraram o bloco de redes deste rodapé. -->
+    <footer class="rodape rodape--completo">
+      <div class="envelope rodape__grade">
+        <div class="rodape__marca">
+          <span class="selo" aria-hidden="true"></span>
+          <div>
+            <p><strong>MEGER · Clínica Financeira</strong></p>
+            <p class="rodape__descricao">Conteúdo sobre gestão, tributos e patrimônio para quem atende.</p>
+          </div>
+        </div>
+
+        <nav class="rodape__redes" aria-label="MEGER nas redes">
+          <a class="rodape__rede" href="https://www.instagram.com/danimeger/?utm_source=linktree&amp;utm_medium=bio">
+            <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
+            </svg> Instagram
+          </a>
+          <a class="rodape__rede" href="https://www.youtube.com/@danielemeger?utm_source=linktree&amp;utm_medium=bio">
+            <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <path d="M10.4 9.3v5.4l4.7-2.7-4.7-2.7Z" fill="currentColor" stroke="none" />
+            </svg> YouTube
+          </a>
+          <a class="rodape__rede"
+            href="https://www.linkedin.com/in/danielemeger/?utm_source=linktree&amp;utm_medium=bio">
+            <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="4" />
+              <path d="M7.6 10.8V17M12 17v-3.4a2.4 2.4 0 0 1 4.8 0V17" />
+              <circle cx="7.6" cy="7.4" r="1.1" fill="currentColor" stroke="none" />
+            </svg> LinkedIn
+          </a>
+          <a class="rodape__rede"
+            href="https://www.facebook.com/daniele.megerkeppen.9?utm_source=linktree&amp;utm_medium=bio">
+            <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <path d="M14 17v-6.2c0-1.5.9-2.4 2.3-2.4h.9" />
+              <path d="M11.9 12.6h4.3" />
+            </svg> Facebook
+          </a>
+          <a class="rodape__rede" href="mailto:danielemeger@gmail.com">
+            <svg class="icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2.8" y="5" width="18.4" height="14" rx="2.4" />
+              <path d="m3.6 7.4 8.4 5.6 8.4-5.6" />
+            </svg> E-mail
+          </a>
+        </nav>
+      </div>
+
+      <div class="envelope rodape__base">
+        <p>© 2026 <strong>MEGER</strong> · Clínica Financeira</p>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
