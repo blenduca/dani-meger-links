@@ -1,0 +1,70 @@
+/* MEGER — Fraunces servida do próprio domínio.
+   ⚠️ NÃO é cópia espelhada do design system: o DS declara a família em
+   `typography.css` (`--display`), mas não hospeda arquivo. Este arquivo é
+   específico deste ativo e é o único lugar da conta que serve a fonte.
+
+   POR QUE SELF-HOSTED AQUI, se a lp-dna-financeiro e a lp-mentoria-mmm puxam
+   do Google (no molde do linktree da Sabina):
+
+   1. Tira um terceiro do caminho crítico — o `@import` do Google custa uma
+      resolução de DNS, um handshake TLS e um CSS a mais ANTES de a fonte
+      sequer começar a baixar.
+   2. Não vaza o IP de quem abre a página para o Google.
+   3. É a razão que pesa: este é o LINK DA BIO. Abre no navegador embutido do
+      Instagram, no 4G, e o tempo até o primeiro texto legível é o que decide
+      se a pessoa fica. É a página da conta onde isso mais importa.
+
+   ⚠️ VARIÁVEL, não estática. Os eixos SOFT e WONK são o que o manual da Unity
+   elogia na fonte ("as curvas suaves do E e do G, que trazem leveza") e o que
+   separa esta página de qualquer outra com a mesma Fraunces. Uma estática não
+   tem esses eixos.
+
+   Subset LATIN apenas (U+0000-00FF + pontuação). Cobre o português inteiro:
+   ã, ç, é, ô, õ estão todos abaixo de U+00FF. O `latin-ext` seria ~40 KB de
+   glifos que esta página nunca desenha.
+
+   PESO — 264 KB → 110 KB, e cada corte tem uma razão:
+   · subset pelos glifos que a página realmente usa (127, com margem para a
+     copy mudar): 118 → 81 KB no romano;
+   · 🔴 o ITÁLICO virou CORTE ESTÁTICO (102 → 29 KB). Ele aparece num lugar só,
+     a frase-mãe do cabeçalho, e o CSS fixa `SOFT 70 / WONK 1 / peso 600` —
+     não varia nada. Carregar a família variável inteira para uma frase era
+     pagar 102 KB por eixos que ninguém move. O `opsz` continua variável, que é
+     o único eixo que responde sozinho ao tamanho da fonte.
+   · o ROMANO continua VARIÁVEL de propósito: ele varia de verdade na página
+     (`SOFT 45 / WONK 1` nos títulos, padrão no resto).
+
+   ⚠️ Ao mudar a copy, reconferir o subset: caractere fora do conjunto vira
+   glifo faltando. O conjunto tem margem (acentos, numerais, pontuação e as
+   setas ↗ →), mas não é infinito. */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300 700;
+  font-stretch: 100%;
+  /* `swap`: mostra o texto em Georgia enquanto a fonte carrega, em vez de
+     deixar a área em branco. Numa página cujo conteúdo É texto, bloco invisível
+     é pior do que troca de fonte. */
+  font-display: swap;
+  src: url('Fraunces-Variable.woff2') format('woff2-variations'),
+       url('Fraunces-Variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Corte estático em peso 600 — o único que o CSS pede (`--fw-semibold` no `em`).
+   Declarar uma FAIXA de pesos aqui faria o navegador sintetizar negrito por
+   engrossamento quando pedissem outro peso, que é pior que não ter. */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('Fraunces-Italic.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}

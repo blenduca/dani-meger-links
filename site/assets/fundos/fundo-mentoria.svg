@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" role="presentation">
+<title>fundo-mentoria</title>
+<defs>
+
+        <linearGradient id="chao" x1="0" y1="0" x2="0.35" y2="1">
+          <stop offset="0" stop-color="#3E2B20"/>
+          <stop offset="1" stop-color="#1C1310"/></linearGradient>
+        <linearGradient id="vao" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#B8863B" stop-opacity="0.05"/>
+          <stop offset="1" stop-color="#DCC28C" stop-opacity="0.62"/></linearGradient>
+        <pattern id="mtp0" width="5" height="5" patternUnits="userSpaceOnUse">
+        <circle cx="2.5" cy="2.5" r="1.5" fill="#DCC28C"/></pattern>
+      <linearGradient id="mtg0" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="0.3" stop-color="#fff" stop-opacity="1"/><stop offset="0.5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <mask id="mtm0"><rect x="-40" y="-40" width="3000" height="3000" fill="url(#mtg0)"/></mask>
+<pattern id="mtp1" width="5" height="5" patternUnits="userSpaceOnUse">
+        <circle cx="2.5" cy="2.5" r="1" fill="#DCC28C"/></pattern>
+      <linearGradient id="mtg1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0.22" stop-color="#fff" stop-opacity="0"/><stop offset="0.42" stop-color="#fff" stop-opacity="1"/><stop offset="0.62" stop-color="#fff" stop-opacity="1"/><stop offset="0.78" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <mask id="mtm1"><rect x="-40" y="-40" width="3000" height="3000" fill="url(#mtg1)"/></mask>
+<pattern id="mtp2" width="5" height="5" patternUnits="userSpaceOnUse">
+        <circle cx="2.5" cy="2.5" r="0.55" fill="#DCC28C"/></pattern>
+      <linearGradient id="mtg2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0.55" stop-color="#fff" stop-opacity="0"/><stop offset="0.75" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient>
+      <mask id="mtm2"><rect x="-40" y="-40" width="3000" height="3000" fill="url(#mtg2)"/></mask>
+</defs>
+
+        <rect width="800" height="440" fill="url(#chao)"/>
+        <rect x="-20" y="-20" width="840" height="480" fill="url(#mtp0)" mask="url(#mtm0)" opacity="0.14"/><rect x="-20" y="-20" width="840" height="480" fill="url(#mtp1)" mask="url(#mtm1)" opacity="0.14"/><rect x="-20" y="-20" width="840" height="480" fill="url(#mtp2)" mask="url(#mtm2)" opacity="0.14"/>
+        <path d="M -10 440 L -10 388 A 26 26 0 0 1 42 388 L 42 440 Z" fill="url(#vao)" opacity="0.46"/>
+          <path d="M -10 440 L -10 388 A 26 26 0 0 1 42 388 L 42 440 Z" fill="none" stroke="#DCC28C" stroke-opacity="0.3" stroke-width="1.2"/><path d="M 58 440 L 58 362 A 39 39 0 0 1 136 362 L 136 440 Z" fill="url(#vao)" opacity="0.56"/>
+          <path d="M 58 440 L 58 362 A 39 39 0 0 1 136 362 L 136 440 Z" fill="none" stroke="#DCC28C" stroke-opacity="0.4" stroke-width="1.2"/><path d="M 154 440 L 154 328 A 56 56 0 0 1 266 328 L 266 440 Z" fill="url(#vao)" opacity="0.66"/>
+          <path d="M 154 440 L 154 328 A 56 56 0 0 1 266 328 L 266 440 Z" fill="none" stroke="#DCC28C" stroke-opacity="0.5" stroke-width="1.2"/><path d="M 286 440 L 286 284 A 78 78 0 0 1 442 284 L 442 440 Z" fill="url(#vao)" opacity="0.76"/>
+          <path d="M 286 440 L 286 284 A 78 78 0 0 1 442 284 L 442 440 Z" fill="none" stroke="#DCC28C" stroke-opacity="0.6000000000000001" stroke-width="1.2"/><path d="M 462 440 L 462 228 A 106 106 0 0 1 674 228 L 674 440 Z" fill="url(#vao)" opacity="0.8600000000000001"/>
+          <path d="M 462 440 L 462 228 A 106 106 0 0 1 674 228 L 674 440 Z" fill="none" stroke="#DCC28C" stroke-opacity="0.7" stroke-width="1.2"/><path d="M 694 440 L 694 154 A 143 143 0 0 1 980 154 L 980 440 Z" fill="url(#vao)" opacity="0.96"/>
+          <path d="M 694 440 L 694 154 A 143 143 0 0 1 980 154 L 980 440 Z" fill="none" stroke="#DCC28C" stroke-opacity="0.8" stroke-width="1.2"/>
+
+  <filter id="grao" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="800" height="440" filter="url(#grao)" opacity="0.17" style="mix-blend-mode:overlay"/>
+</svg>

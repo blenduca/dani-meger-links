@@ -1,0 +1,36 @@
+{
+  "funil": {
+    "_leia": "O hostname de produção deste ativo. A auditoria parte DAQUI, não do nome do projeto.",
+    "publico": true,
+    "motivo": "funil de captação",
+    "contatos_publicos": [
+      "5511941335119",
+      "danielemeger@gmail.com"
+    ],
+    "_contatos_leia": "O que esta página expõe DE PROPÓSITO. Placeholders de formulário entram aqui porque são texto da página, não dado de ninguém.",
+    "dominio": "funil-links-meger.potenzia.digital",
+    "servindo": {
+      "medido_em": "2026-09-04T12:17:06.681Z",
+      "alias": 200,
+      "pages_dev": 200,
+      "dominio": 200,
+      "dominio_e_este_deploy": false,
+      "noindex": true
+    },
+    "pii": {
+      "medido_em": "2026-09-04T12:17:17.529Z",
+      "arquivos_varridos": 12,
+      "achados": 0
+    }
+  },
+  "deploy": {
+    "_leia": "Quem subiu, quando e o quê. O token é de máquina e não identifica ninguém; este bloco é a atribuição.",
+    "quem": "suporte@ricardowerlang.com.br",
+    "quando": "2026-09-04T12:17:17.528Z",
+    "projeto": "funil-links-meger",
+    "deploy_id": "dbdd3c66-9a4d-47d7-b4db-0ee86fc370f9",
+    "url": "https://dbdd3c66.funil-links-meger.pages.dev",
+    "sem_protecao": true,
+    "motivo": "funil de captação"
+  }
+}

@@ -1,0 +1,30 @@
+/* ⚠️ CÓPIA ESPELHADA do design system — NÃO editar aqui.
+   Fonte da verdade: clientes/cliente-daniele-meger/recursos/design-system/sistema/tokens/
+   Copiado em 2026-07-29. Mudou lá, copiar de novo (este ativo é estático puro e
+   publica sozinho, então não há como importar de fora da pasta do deploy).
+   Editar esta cópia é o drift silencioso que a padrao-design-system.md proíbe. */
+
+/* MEGER — espacamento e grid. Fonte dos valores.
+   ⚠️ DERIVADO pela PotenZIA: o deck e apresentacao e nao define grid.
+   O que vem do deck e o RITMO, nao os numeros — e o ritmo e generoso.
+
+   Regra que sai do material: respiro e IDENTIDADE nesta marca, nao sobra.
+   O deck usa pagina majoritariamente vazia, com o texto ocupando ~40% da largura.
+   Layout apertado quebra o posicionamento (clareza, leveza, patrimonio) antes de
+   quebrar o design. */
+:root {
+  --s-4:   4px;
+  --s-8:   8px;
+  --s-16:  16px;
+  --s-24:  24px;
+  --s-32:  32px;
+  --s-48:  48px;
+  --s-64:  64px;
+  --s-96:  96px;
+  --s-128: 128px;
+
+  --coluna: 1200px;                        /* largura maxima de conteudo */
+  --gutter: clamp(1.25rem, 5vw, 2.5rem);   /* respiro lateral */
+  --colunas: 12;
+  --gap: var(--s-24);
+}

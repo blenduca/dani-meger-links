@@ -1,0 +1,57 @@
+/* ⚠️ CÓPIA ESPELHADA do design system — NÃO editar aqui.
+   Fonte da verdade: clientes/cliente-daniele-meger/recursos/design-system/sistema/tokens/
+   Copiado em 2026-07-29. Mudou lá, copiar de novo (este ativo é estático puro e
+   publica sozinho, então não há como importar de fora da pasta do deploy).
+   Editar esta cópia é o drift silencioso que a padrao-design-system.md proíbe. */
+
+/* MEGER — cores. Fonte dos valores (padrao-design-system.md).
+   Origem: deck de branding da agencia Unity + "Paleta de Cor Fidem.pdf" (as duas
+   fontes trazem as MESMAS 5 cores). Paleta FECHADA: nao existe sexta cor de marca.
+   Contraste calculado em 2026-07-29: ver design-system.html §Prova.
+
+   REGRA DURA: --dourado e ACENTO/FUNDO, nunca tinta. Como texto reprova em todo
+   fundo claro: 2,74 sobre creme · 3,23 sobre branco. E justamente a combinacao que
+   a marca mais sugere visualmente — e a que menos se pode usar.
+   Para texto dourado existe --dourado-texto (5,29 sobre creme · 6,23 sobre branco).
+   Rotulo de botao dourado vai em --marrom (4,14 — so texto grande/UI), nunca em creme. */
+:root {
+  /* marca — as 5 do manual */
+  --marrom:        #3E2B20;   /* tinta e fundo escuro institucional */
+  --verde:         #4B5D45;   /* cor de marca dominante: bloco, selo, superficie */
+  --dourado:       #B8863B;   /* ACENTO/FUNDO. NUNCA cor de texto. */
+  --dourado-claro: #DCC28C;   /* acento sobre fundo escuro, filete, linha do simbolo */
+  --creme:         #F3ECDD;   /* fundo padrao da marca */
+
+  /* derivado pela PotenZIA — NAO esta no manual da Unity */
+  --dourado-texto: #7E5A22;   /* o dourado quando precisa SER texto. 5,29 creme / 6,23 branco */
+
+  /* NAO existe token de preto, de proposito. Em 2026-07-29 um --preto #080808
+     foi proposto (amostrado das paginas de titulo do deck) e DESCARTADO na
+     revisao: a paleta e declarada FECHADA EM 5 CORES, no manual preto e so
+     versao do logo, e fundo claro conversa melhor com o publico (consultorio
+     medico). Fundo de peca e --creme; as outras cores entram em BLOCO.
+     Se algum dia a Unity autorizar preto, isto volta como token e nao como
+     hex solto no ativo. */
+
+  /* neutros */
+  --white: #ffffff;
+
+  /* texto */
+  --text:              var(--marrom);
+  --text-on-dark:      rgba(243, 236, 221, .96);   /* creme a 96% sobre marrom/verde */
+  --text-on-dark-soft: rgba(243, 236, 221, .72);
+
+  /* linhas */
+  --hairline-light: rgba(62, 43, 32, .14);
+  --hairline-dark:  rgba(243, 236, 221, .18);
+
+  /* estado — veredito de contraste, usado na documentacao */
+  --pass: #17705a;
+  --fail: #b42318;
+  --warn: #8a5a00;
+}
+
+/* NAO existe token para branco puro como fundo de marca, de proposito: o fundo
+   da MEGER e --creme. Branco so aparece em superficie de UI (card, tabela).
+   NAO existe token para as cores dos ativos "Fidem" — a marca legada nao tem
+   paleta propria; as 5 cores acima ja eram as dela. */

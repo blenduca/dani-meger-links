@@ -1,0 +1,119 @@
+/* SpecularButton (React Bits) — CSS port.
+   Classes e custom properties seguem o componente original 1:1; a única
+   mudança é tipografia (herda as fontes/pesos da marca em vez do genérico
+   "500 / inherit" do original) para o botão não destoar do resto do site. */
+
+.specular-button {
+  --sb-radius: 18px;
+  --sb-tint: #ffffff;
+  --sb-tint-opacity: 0;
+  --sb-blur: 0px;
+  --sb-text-color: #f5f5f5;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin: 0;
+  font-family: var(--body, inherit);
+  font-weight: var(--fw-bold, 700);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: var(--sb-text-color);
+  background: color-mix(in srgb, var(--sb-tint) calc(var(--sb-tint-opacity) * 100%), transparent);
+  border-radius: var(--sb-radius);
+  backdrop-filter: blur(var(--sb-blur));
+  -webkit-backdrop-filter: blur(var(--sb-blur));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  /* `var(--transicao)` é o MESMO token que todo hover do site usa (botões,
+     cards, tabela — ver estilo.css): ease-out sem overshoot. A primeira
+     tentativa usou uma curva com leve overshoot (control point acima de 1) e
+     o próprio scanner do impeccable marcou como "slop" — datado, e contradiz
+     uma marca cujo manual já bane sombra pesada e urgência artificial. O
+     crescimento sutil (3,5%) já registra a intenção sem precisar de um pico
+     passando do tamanho final.
+     Sem fallback: este componente já roda dentro do site, que sempre define
+     o token — diferente de `--body`/`--fw-bold` acima, que precisam de
+     fallback genérico por serem, em tese, reaproveitáveis fora dele. */
+  transition: transform var(--transicao, .2s cubic-bezier(.16, 1, .3, 1));
+}
+
+/* Cresce ~3,5%: perceptível sem deslocar o layout ao redor (o `.specular-button__fx`
+   já tem `inset: -20px` de sobra, então o halo do brilho não corta na borda do
+   canvas durante o crescimento). `:active` vem DEPOIS na cascata de propósito —
+   mesma especificidade, então ele vence sobre `:hover` enquanto o botão está
+   pressionado, e o clique continua "afundando" em vez de crescer. */
+.specular-button:hover {
+  transform: scale(1.035);
+}
+
+.specular-button:active {
+  transform: scale(0.97);
+}
+
+.specular-button:disabled:hover,
+.specular-button[aria-disabled="true"]:hover {
+  transform: none;
+}
+
+.specular-button:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--sb-text-color) 60%, transparent);
+  outline-offset: 3px;
+}
+
+.specular-button:disabled,
+.specular-button[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.specular-button:disabled:active,
+.specular-button[aria-disabled="true"]:active {
+  transform: none;
+}
+
+.specular-button--sm {
+  font-size: 0.85rem;
+  padding: 10px 22px;
+}
+
+.specular-button--md {
+  font-size: 1rem;
+  padding: 14px 30px;
+}
+
+.specular-button--lg {
+  font-size: 1.15rem;
+  padding: 18px 40px;
+}
+
+/* Canvas extends past the button so the rim glow can bleed outside the edge */
+.specular-button__fx {
+  position: absolute;
+  inset: -20px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.specular-button__fx canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.specular-button__label {
+  position: relative;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .specular-button__fx { display: none; }
+  .specular-button { transition: none; }
+  .specular-button:hover { transform: none; }
+}

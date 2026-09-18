@@ -1,0 +1,470 @@
+/* ==========================================================================
+   Página de links — MEGER.
+   Molde: `cliente-sabina-deweik/2-motor-de-crescimento/marketing/linktree/`,
+   aprovada pelo Ricardo. Direção visual: a mesma da conta — BASE CREME + COR
+   EM BLOCO + MOLDURA QUE ABRAÇA.
+   --------------------------------------------------------------------------
+   ZERO JAVASCRIPT. Não é economia de esforço: é a diferença entre uma página
+   que existe no HTML e a atual, que precisa de 270 KB de JS para desenhar três
+   links — e cujo documento servido não contém texto nenhum.
+
+   Consome os tokens por `ds/tokens/base.css` e a fonte por `ds/fonts/fontes.css`.
+   PROIBIDO hex e px cru: valor sem token é sinal de que falta token.
+
+   HIERARQUIA É DELIBERADA (a lição que o README da Sabina explicita): o herói
+   tem mais altura, título maior e duas ações; as faixas são menores e têm uma.
+   Aumentar as faixas mata o destaque do principal.
+
+   🔴 AS ARMADILHAS DE CONTRASTE DA PALETA VALEM INTEIRAS
+   (`.claude/rules/frontend/desta-instancia.md`). As que esta página encosta:
+   · dourado sobre creme = 2,74 — reprova como texto E como elemento gráfico;
+   · dourado-claro sobre VERDE = 4,11 — só passa em display ≥24px;
+   · dentro de bloco de cor, PREFIXAR o seletor, senão `.bloco p` vence.
+   Medido no navegador, não estimado.
+   ========================================================================== */
+
+@import "ds/tokens/base.css";
+
+/* --- reset mínimo ------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+body, h1, h2, h3, p, ul, ol, li, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+/* ⚠️ `height: auto` não é enfeite. Os atributos `width`/`height` do HTML (que
+   existem para reservar espaço e evitar layout shift) viram presentational
+   hints, isto é, `height: 1125px`. Com altura explícita, o `aspect-ratio` do
+   CSS é IGNORADO — e a foto do herói esticou para 1125px de altura, deixando
+   um vão verde do tamanho de uma tela. Medido no navegador. */
+img { max-width: 100%; height: auto; display: block; }
+
+body {
+  font-family: var(--body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--marrom);
+  background: var(--creme);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 {
+  font-family: var(--display); font-weight: var(--fw-normal);
+  line-height: var(--lh-tight); letter-spacing: var(--tracking-display);
+  color: var(--marrom);
+}
+/* Os eixos variáveis da Fraunces — é para isto que a fonte é servida em versão
+   VARIÁVEL. Uma estática não tem SOFT nem WONK, e o manual da Unity elogia
+   exatamente o que eles fazem. */
+em { font-style: italic; font-weight: var(--fw-semibold); color: var(--verde);
+     font-variation-settings: "SOFT" 70, "WONK" 1; }
+
+/* --- foco visível -------------------------------------------------------- */
+:where(a, button):focus-visible {
+  outline: var(--traco-espesso) solid var(--verde); outline-offset: var(--s-4);
+}
+/* Sobre foto e sobre bloco de cor o verde some — troca por dourado-claro, que
+   é grafismo aqui (piso 3,0) e não texto. */
+.heroi :focus-visible, .faixa:focus-visible, .faixa :focus-visible {
+  outline-color: var(--dourado-claro);
+}
+
+/* --- estrutura ----------------------------------------------------------- */
+.pagina { min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+  padding-block: var(--s-48) 0; }
+/* `margin-inline: auto`, e não só a centralização do `.pagina` flex, porque o
+   rodapé usa `.envelope` num contexto DIFERENTE: `.rodape__grade` e
+   `.rodape__base` são filhos de bloco de `.rodape` (a barra marrom full-bleed),
+   não filhos diretos do `.pagina`. Sem margem própria, o envelope ficava
+   encostado à esquerda dentro da barra — herdava a largura máxima, mas não o
+   centro. Com a margem, `.envelope` se centra sozinho em qualquer container,
+   e o que o `.pagina` fazia vira redundância inofensiva, não dependência. */
+.envelope { width: 100%; max-width: 46rem; margin-inline: auto; padding-inline: var(--gutter); }
+.pilha { display: grid; gap: var(--s-24); margin-top: var(--s-48); }
+
+/* --- símbolo e selo, por máscara ---------------------------------------- */
+/* Pintados por `background-color`: sempre token, nunca cor de fora — é o que
+   respeita o slide de usos incorretos do deck ("não alterar cores
+   inexistentes na paleta"). */
+.simbolo, .selo {
+  display: inline-block;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center;  mask-position: center;
+  -webkit-mask-size: contain;     mask-size: contain;
+  background-color: currentColor;
+}
+.simbolo {
+  -webkit-mask-image: url("assets/simbolo-mascara.png");
+  mask-image: url("assets/simbolo-mascara.png");
+  width: 1.6rem; aspect-ratio: 186 / 213;
+}
+.selo {
+  -webkit-mask-image: url("assets/selo-mascara.png");
+  mask-image: url("assets/selo-mascara.png");
+  width: 5rem; aspect-ratio: 192 / 211;
+}
+
+/* --- moldura que abraça ---------------------------------------------------
+   Portada 1:1 da LP Mente Médica Milionária (`.arco`): topo em arco, base
+   quadrada — a mesma proporção do símbolo (186/213) aplicada como recorte de
+   foto. `overflow: hidden` direto na classe, como lá, porque quem usa `.arco`
+   pode não ter overflow próprio (era o caso do `.heroi__figura` antes de
+   ganhar um). */
+.arco { border-radius: 50% 50% var(--raio-lg) var(--raio-lg) / 38% 38% var(--raio-lg) var(--raio-lg); overflow: hidden; }
+
+/* --- cabeçalho ----------------------------------------------------------- */
+.cabecalho { text-align: center; display: grid; justify-items: center; gap: var(--s-8); }
+.cabecalho__lide { margin-top: var(--s-24); max-width: 34ch; }
+
+/* Marca: mesmo lockup (ícone + wordmark) do cabeçalho fixo da LP do DNA
+   Financeiro — icone e texto lado a lado, "Clínica Financeira" como
+   descritor. Aqui centrado no envelope, e não numa barra sticky, e sozinha
+   como identificação do topo (sem "Dani Meger" ao lado). */
+.marca { display: inline-flex; align-items: center; gap: var(--s-16); color: var(--marrom); }
+.marca .simbolo { color: var(--verde);
+  /* Ícone do tamanho da PILHA de texto ao lado, não de um valor arbitrário:
+     altura de .marca__texto é 1 linha de --fs-2xl (2rem) + --s-8 de gap +
+     1 linha de .marca__descritor (--fs-xs, .75rem) = 3,25rem. Com o mask no
+     aspect-ratio 186/213, a largura que produz essa altura é
+     3,25 × (186/213) ≈ 2,84rem. Medido no navegador, não estimado. */
+  width: 2.84rem;
+}
+.marca__texto { display: flex; flex-direction: column; gap: var(--s-8); text-align: left; }
+.marca__nome { font-family: var(--display); font-size: var(--fs-2xl); line-height: 1;
+  letter-spacing: .06em; }
+/* --fs-xs (12px) é o piso absoluto da escala — o antigo .6rem (9,6px) furava
+   esse piso; a escala maior é a chance de trazer o descritor de volta pra
+   dentro da régua sem perder o ar de rótulo pequeno. */
+.marca__descritor { display: block; font-family: var(--body); font-size: var(--fs-xs); line-height: 1;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--verde); }
+
+/* Credenciais: as duas que a própria cliente já publica. Nada de número que
+   não tenha fonte — a mesma régua aplicada nas outras páginas da conta.
+   O badge é o mesmo `.sobretitulo` (marcado junto no HTML) da LP do DNA
+   Financeiro — mesma fonte, mesmo peso, mesma pílula, sem exceção pro texto
+   em frase: aqui o layout da referência vale igual ao dos outros rótulos. */
+.credenciais { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s-8);
+  margin-top: var(--s-16); }
+
+/* --- peças compartilhadas ------------------------------------------------ */
+/* Badge, não linha solta — mesmo fundo, preenchimento e traço do rótulo de
+   seção da LP do DNA Financeiro (blenduca-design/dani-meger-dna-financeiro,
+   `.sobretitulo`). Lá o ponto antes do texto separa o rótulo da barra fixa;
+   aqui, sem barra fixa por perto, o ponto não faz falta e sai. */
+.sobretitulo {
+  display: inline-flex; align-items: center;
+  padding: var(--s-4) var(--s-16);
+  border: var(--traco) solid color-mix(in srgb, var(--verde) 28%, transparent);
+  border-radius: var(--raio-pilula);
+  background: color-mix(in srgb, var(--verde) 7%, transparent);
+  font-size: var(--fs-xs); font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-eyebrow); text-transform: uppercase;
+  color: var(--verde);
+}
+.cartao__titulo { font-size: clamp(1.6rem, 4.4vw, 2.1rem); margin-block: var(--s-16) var(--s-16); }
+.cartao__texto { font-size: var(--fs-sm); }
+
+/* --- botões -------------------------------------------------------------- */
+/* Rótulo em MARROM sobre dourado: 4,14. Creme sobre dourado seria 2,74.
+   ⚠️ Dívida conhecida e registrada na rule: a 16px bold, 4,14 fica abaixo do
+   piso de 4,5 que se aplica abaixo de 18,66px. Vale para toda a conta (a
+   lp-mentoria-mmm publicada tem o mesmo botão) e a correção é decisão de marca:
+   subir o rótulo para 22px ou trocar o botão para verde. Não se corrige aqui
+   sozinho — corrigir num ativo só criaria duas marcas. */
+.botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-8);
+  font-family: var(--body); font-size: var(--fs-base); font-weight: var(--fw-bold);
+  padding: var(--s-16) var(--s-32);
+  border: none; border-radius: var(--raio-pilula);
+  background: var(--dourado); color: var(--marrom);
+  text-decoration: none;
+  transition: filter var(--transicao), transform var(--transicao);
+}
+.botao:hover { filter: brightness(1.06); transform: translateY(-2px); }
+
+/* --- botão secundário ----------------------------------------------------
+   Portado da LP do DNA Financeiro (`.botao--secundario`): sem preenchimento em
+   repouso — só o stroke — e a tinta entra por trás no hover, de baixo pra cima.
+   O mecanismo é o mesmo, inclusive o `transform-origin: bottom`.
+
+   ⚠️ A TINTA MUDA POR SUPERFÍCIE, E ISSO É FIDELIDADE, NÃO DESVIO. A própria LP
+   redeclara o par de cores dentro de `.bloco--verde`/`.bloco--marrom` em vez de
+   usar um dourado só — porque `--dourado-texto` sobre claro e `--dourado-claro`
+   sobre escuro são os dois lados da armadilha nº 1 da paleta. Aqui as duas
+   faixas são superfícies diferentes das de lá, então cada uma declara o seu par
+   (ver `.faixa--marrom`/`.faixa--dourada` mais abaixo). Herdar o par da LP sem
+   olhar a superfície colocaria `--dourado-texto` (#7E5A22) sobre dourado-claro:
+   3,54 medido, reprovado. */
+.botao--secundario {
+  position: relative; overflow: hidden;
+  gap: var(--s-8); padding: var(--s-8) var(--s-24);
+  font-size: var(--fs-sm); font-weight: var(--fw-semibold); letter-spacing: .01em;
+  background: transparent;
+  transition: color var(--transicao), border-color var(--transicao);
+  z-index: 0;
+}
+.botao--secundario::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform var(--transicao);
+}
+.botao--secundario:hover { filter: none; transform: none; }
+/* O cartão inteiro é o link, então o preenchimento sobe quando o mouse entra
+   no CARTÃO — não só quando encosta no rótulo. Sem isso o botão ficaria
+   inerte no gesto que de fato dispara a navegação. */
+.faixa:hover .botao--secundario::before,
+.botao--secundario:hover::before { transform: scaleY(1); }
+/* O alvo de toque volta ao piso de 44px onde não há ponteiro — o botão
+   secundário é curto de propósito no desktop, e curto demais para o dedo. */
+@media (pointer: coarse) { .botao--secundario { min-height: 2.75rem; } }
+
+/* ==========================================================================
+   1 · HERÓI — o diagnóstico
+   ========================================================================== */
+/* --- fundo liso -----------------------------------------------------------
+   🚫 Saiu a arte gerada (arcada + véu) SÓ DESTE CARD — o herói é o que
+   ganhou a foto, e é aqui que "fundo liso" foi pedido. As duas faixas
+   abaixo continuam com o sistema de `scripts/gerar-fundos.mjs`; não
+   generalizar essa remoção para elas de novo. */
+.heroi {
+  position: relative;
+  display: flex; flex-wrap: wrap; gap: var(--s-32);
+  background: var(--verde); color: var(--text-on-dark);
+  border-radius: var(--raio-lg); overflow: hidden;
+  padding: var(--s-48) var(--s-32);
+}
+.heroi__corpo { flex: 1 1 20rem; max-width: 34rem; }
+.heroi h2, .heroi .cartao__titulo { color: var(--creme); }
+.heroi p { color: var(--text-on-dark); }
+.heroi__acoes { margin-top: var(--s-32); }
+/* Imagem na mesma altura da pilha de conteúdo ao lado. `.heroi` é flex-row e
+   `align-items` fica no padrão (`stretch`) — o que faltava era o PRÓPRIO
+   `.heroi__figura` parar de ter altura intrínseca. Tirando a imagem do fluxo
+   (posicionamento absoluto), a altura do figure passa a vir só do stretch do
+   flex, e a imagem enche o que sobrar: mesmo resultado do `height: 100%` que
+   a hero da LP Mente Médica Milionária usa (lá em grid; aqui em flex). */
+.heroi__figura { position: relative; flex: 1 1 12rem; max-width: 15rem; }
+.heroi__figura img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 14%;
+}
+
+/* ==========================================================================
+   2 e 3 · FAIXAS — menores que o herói, uma ação cada
+   ========================================================================== */
+.faixa {
+  position: relative; display: flex; align-items: stretch;
+  min-height: 15rem; border-radius: var(--raio-lg); overflow: hidden;
+  text-decoration: none; color: inherit;
+}
+/* 🎨 Fundo em arte — em camada própria, porque `background-size: cover` não
+   é animável (`transform` sim). Cada faixa carrega o gesto que corresponde
+   ao que ela oferece: a arte diferencia por número de arcos, escala e
+   recorte, nunca por um ícone (é a regra do gerador da plataforma). A cor de
+   fundo repete o topo do degradê do SVG: sem o arquivo, a faixa continua
+   sendo o bloco de cor que já era.
+   ⚠️ SÓ AS FAIXAS, NÃO O HERÓI. O pedido foi remover a arte só do card em
+   que se estava mexendo (o herói, que ganhou a foto) — estas duas mantêm o
+   sistema gerado por `scripts/gerar-fundos.mjs`. */
+.faixa::after {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background-repeat: no-repeat; background-position: 50% 100%; background-size: cover;
+  transform-origin: 50% 100%;
+  transition: transform var(--transicao);
+}
+/* Crescimento com cadência: a mentoria é transformar faturamento em
+   patrimônio, e a arcada cresce da esquerda para a direita. */
+.faixa--marrom { background-color: var(--marrom); }
+.faixa--marrom::after { background-image: url("assets/fundos/fundo-mentoria.svg"); }
+/* Arcos que se entrelaçam: a área compartilhada por duas partes é a própria
+   conversa. Sobre claro o traço inverte para marrom. */
+.faixa--dourada { background-color: var(--dourado-claro); }
+.faixa--dourada::after { background-image: url("assets/fundos/fundo-conversa.svg"); }
+
+/* Véu: sem ele o texto cai sobre a arte e o contraste vira sorte. Horizontal
+   no desktop (texto à esquerda, arcada à direita); no celular o texto ocupa a
+   largura toda, então o véu VIRA VERTICAL — mesma lição registrada no linktree
+   da Sabina.
+   ⚠️ As DUAS faixas têm véu. A marrom precisa porque tem arte; a dourada
+   também, pelo mesmo motivo — sem véu o contraste passa a depender de onde
+   o arco caiu, que é exatamente o defeito que o véu existe para não ter. */
+.faixa--marrom::before,
+.faixa--dourada::before {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+}
+.faixa--marrom::before {
+  background: linear-gradient(90deg, var(--marrom) 42%, transparent 100%);
+}
+.faixa--dourada::before {
+  background: linear-gradient(90deg, var(--dourado-claro) 44%, transparent 100%);
+}
+
+.faixa__corpo { position: relative; z-index: 2; padding: var(--s-32); max-width: 30rem; align-self: center; }
+.faixa__corpo--sem-foto { max-width: 34rem; }
+
+/* ⚠️ PREFIXADO DE PROPÓSITO. `.faixa--marrom p` é (0,1,1) e venceria uma classe
+   só; foi assim que uma mensagem desta conta saiu creme sobre creme, invisível
+   por dois dias em produção. Cada bloco declara o seu par de texto. */
+.faixa--marrom .faixa__titulo { color: var(--creme); }
+.faixa--marrom .faixa__texto { color: var(--text-on-dark); }
+.faixa--marrom .faixa__texto b { color: var(--dourado-claro); }
+.faixa--marrom .faixa__nota { color: var(--text-on-dark-soft); }
+/* Superfície ESCURA: é o caso `.bloco--marrom` da LP, copiado tal e qual —
+   stroke em dourado-claro esmaecido, e no hover o dourado-claro vira FUNDO
+   com tinta marrom por cima (7,73). Nunca o contrário. */
+.faixa--marrom .botao--secundario { color: var(--text-on-dark);
+  border: var(--traco) solid color-mix(in srgb, var(--dourado-claro) 45%, transparent); }
+.faixa--marrom .botao--secundario::before { background: var(--dourado-claro); }
+.faixa--marrom:hover .botao--secundario,
+.faixa--marrom .botao--secundario:hover { color: var(--marrom); border-color: var(--dourado-claro); }
+
+.faixa--dourada .faixa__titulo,
+.faixa--dourada .faixa__texto { color: var(--marrom); }                /* 7,73 */
+/* Superfície CLARA. A LP tinta o secundário com `--dourado-texto` porque lá ele
+   assenta em creme/areia (5,29). Aqui a superfície é dourado-claro, e o mesmo
+   #7E5A22 mede 3,54 — reprovado. Então o par vira marrom/creme, que é a mesma
+   lógica da LP (stroke discreto em repouso, tinta cheia subindo no hover)
+   resolvida para ESTA superfície. */
+.faixa--dourada .botao--secundario { color: var(--marrom);
+  border: var(--traco) solid color-mix(in srgb, var(--marrom) 38%, transparent); }
+.faixa--dourada .botao--secundario::before { background: var(--marrom); }
+.faixa--dourada:hover .botao--secundario,
+.faixa--dourada .botao--secundario:hover { color: var(--creme); border-color: var(--marrom); }
+
+.faixa__titulo { font-family: var(--display); font-size: clamp(1.7rem, 5vw, 2.4rem);
+  line-height: var(--lh-tight); margin-block: 0 var(--s-16);
+  font-variation-settings: "SOFT" 45, "WONK" 1; }
+.faixa__texto { font-size: var(--fs-sm); max-width: 34ch; }
+.faixa__cta { margin-top: var(--s-24); }
+.faixa__nota { display: block; margin-top: var(--s-16); font-size: var(--fs-xs); }
+
+/* 🚫 Sai o selo marca-d'água da faixa dourada. Ele existia "no lugar da foto":
+   era o preenchimento do lado direito enquanto as outras faixas tinham
+   retrato. Agora esse lado é a arcada, e selo + arcada no mesmo ponto viram
+   dois vocabulários brigando — um disco de marca por cima de uma arquitetura
+   de arcos. A marca continua no cabeçalho e no rodapé, que é onde ela assina. */
+
+/* ==========================================================================
+   MOVIMENTO DOS CARTÕES — os três, no mesmo gesto
+   --------------------------------------------------------------------------
+   Sobe e cresce sutilmente no hover. Nas faixas, a arte atrás sobe e cresce
+   MAIS — é a diferença de velocidade entre as duas camadas que faz a arcada
+   parecer estar atrás de uma janela, em vez de impressa no cartão. O herói
+   não tem essa segunda camada (fundo liso), então recebe só o movimento do
+   próprio cartão — mesmo gesto de fora, um degrau mais simples por dentro.
+
+   ⚠️ O HERÓI CRESCER É EXCEÇÃO CONSCIENTE À REGRA GERAL DE AFFORDANCE: ele é
+   `<section>`, não `<a>` — clicar nele fora do botão não navega. Pedido
+   explícito do cliente por consistência visual entre os três cartões; o
+   botão primário dentro dele continua sendo o único alvo real de clique.
+
+   Sem sombra — a marca separa plano por cor e textura, e `--sombra` é `none`
+   por decisão de design system, não por esquecimento. Curva: `--transicao`,
+   o mesmo token de todo hover do site (ease-out sem overshoot) — é também a
+   curva do `specular-button` da LP, então o botão primário e o cartão que o
+   contém se movem no mesmo tempo.
+
+   `@media (hover: hover)` porque no toque o `:hover` COLA: sem a guarda, o
+   cartão tocado no celular fica crescido até você tocar em outro lugar. */
+@media (hover: hover) {
+  .heroi, .faixa { transition: transform var(--transicao); }
+  .heroi:hover, .faixa:hover { transform: translateY(-4px) scale(1.012); }
+  .faixa:hover::after { transform: scale(1.05) translateY(-4px); }
+}
+
+/* --- rodapé -------------------------------------------------------------- */
+/* 🚫 Sai o "© Finanças de Quem Cuida" que está no ar hoje — quarto nome de
+   marca em circulação, junto de MEGER, Fidem e "Dani Meger Private Wealth".
+   A marca operante é MEGER (decisão de 2026-07-29).
+   Estrutura e conteúdo iguais ao rodapé completo da LP do DNA Financeiro
+   (`.rodape--completo`): marca+descrição de um lado, redes do outro, barra
+   de copyright embaixo. A seção "Onde ela publica" que existia solta no
+   meio da página virou o bloco de redes daqui — mesma régua da LP, que já
+   junta identidade e navegação social no rodapé em vez de espalhar. */
+.rodape {
+  width: 100%; margin-top: var(--s-64);
+  background: var(--marrom); color: var(--text-on-dark-soft);
+  font-size: var(--fs-sm);
+}
+.rodape strong { color: var(--creme); }
+.rodape a { color: var(--creme); }
+.rodape .selo { color: var(--dourado-claro); }
+
+.rodape--completo { padding-block: var(--s-64) 0; }
+.rodape__grade { display: grid; gap: var(--s-32); }
+@media (min-width: 30rem) {
+  .rodape__grade { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: var(--s-32); align-items: start; }
+}
+.rodape__marca { display: grid; grid-template-columns: auto 1fr; gap: var(--s-16); align-items: start; }
+.rodape__marca .selo { width: 3.5rem; }
+.rodape__descricao { margin-top: var(--s-8); max-width: 34ch;
+  color: color-mix(in srgb, var(--creme) 76%, transparent); }
+
+/* Ícones num só traço (1,6 em viewBox 24) — mesma família desenhada da LP,
+   estendida aqui para YouTube e Facebook (que a LP não precisava). Pílula
+   com rótulo, não ícone nu: ninguém precisa adivinhar a rede. */
+.icone { width: 1.15rem; height: 1.15rem; flex: none; display: block; }
+.rodape__redes { display: flex; flex-wrap: wrap; gap: var(--s-8); margin-top: var(--s-24); }
+@media (min-width: 30rem) { .rodape__redes { margin-top: 0; } }
+.rodape__rede {
+  display: inline-flex; align-items: center; gap: var(--s-8);
+  padding: var(--s-8) var(--s-16); border: var(--traco) solid var(--hairline-dark);
+  border-radius: var(--raio-pilula); font-size: var(--fs-sm);
+  color: var(--text-on-dark); text-decoration: none;
+  transition: background var(--transicao), border-color var(--transicao), color var(--transicao);
+}
+/* Dourado-claro é FUNDO aqui, com tinta marrom por cima (7,73) — nunca o
+   contrário, que é a armadilha nº 1 desta paleta. */
+.rodape__rede:hover { background: var(--dourado-claro); border-color: var(--dourado-claro); color: var(--marrom); }
+.rodape__rede .icone { width: 1rem; height: 1rem; }
+
+.rodape__base {
+  margin-top: var(--s-48); padding-block: var(--s-24);
+  border-top: var(--traco) solid var(--hairline-dark);
+  text-align: center;
+}
+
+/* ==========================================================================
+   CELULAR — é onde esta página vive: link de bio abre no navegador do Instagram
+   ========================================================================== */
+@media (max-width: 40rem) {
+  .heroi { padding: var(--s-32) var(--s-24); }
+  /* O retrato vai para cima do texto: no celular ele é assinatura, não
+     composição — mas assinatura em escala legível, não miniatura. Volta a
+     valer pelo próprio conteúdo (aspect-ratio), não mais pelo stretch do
+     desktop — em coluna não há altura de linha vizinha para esticar contra. */
+  .heroi { flex-direction: column-reverse; }
+  .heroi__figura { max-width: 13rem; margin-inline: auto; }
+  .heroi__figura img {
+    position: static; width: 100%; height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .faixa { min-height: 13rem; }
+  .faixa__corpo { padding: var(--s-24); }
+  /* O texto passa a ocupar a largura toda, então o véu horizontal deixaria a
+     leitura sobre a parte clara da arte. Vira vertical — e abre no pé: é lá
+     que a arcada acende, e é o único lugar da faixa sem texto por cima. */
+  .faixa--marrom::before {
+    background: linear-gradient(180deg, var(--marrom) 0%,
+      color-mix(in srgb, var(--marrom) 86%, transparent) 62%, transparent 100%);
+  }
+  .faixa--dourada::before {
+    background: linear-gradient(180deg, var(--dourado-claro) 0%,
+      color-mix(in srgb, var(--dourado-claro) 86%, transparent) 62%, transparent 100%);
+  }
+
+  /* As duas credenciais são frase, não rótulo curto ("24 anos dentro do
+     sistema financeiro") — no tracking cheio do `.sobretitulo` (0,18em) elas
+     furam a largura do celular e quebram em duas linhas dentro da pílula,
+     que passa de badge a bolha. Zera o tracking e aperta o padding, só aqui:
+     continua maiúsculo/bold/mesma pílula, só sem o espaçamento que não cabe.
+     Medido no navegador em 375px: a mais longa ("400+ famílias de
+     profissionais da saúde") fecha em 318px sozinha, contra 335px de
+     envelope — sobra só 17px pra padding + borda dos dois lados. */
+  .credenciais .sobretitulo { letter-spacing: normal; padding-inline: var(--s-4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .botao:hover, .heroi:hover, .faixa:hover { transform: none; }
+  .faixa:hover::after { transform: none; }
+  .botao--secundario::before { transition: none; }
+  * { transition: none !important; }
+}

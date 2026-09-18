@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" role="presentation">
+<title>fundo-conversa</title>
+<defs>
+
+        <linearGradient id="chao" x1="0" y1="0" x2="0.8" y2="1">
+          <stop offset="0" stop-color="#DCC28C"/>
+          <stop offset="1" stop-color="#B8863B"/></linearGradient>
+        <clipPath id="c0"><path d="M -46 440 L -46 198 A 94 94 0 0 1 142 198 L 142 440 Z"/></clipPath><clipPath id="c1"><path d="M 48 440 L 48 198 A 94 94 0 0 1 236 198 L 236 440 Z"/></clipPath><clipPath id="c2"><path d="M 142 440 L 142 198 A 94 94 0 0 1 330 198 L 330 440 Z"/></clipPath><clipPath id="c3"><path d="M 236 440 L 236 198 A 94 94 0 0 1 424 198 L 424 440 Z"/></clipPath><clipPath id="c4"><path d="M 330 440 L 330 198 A 94 94 0 0 1 518 198 L 518 440 Z"/></clipPath><clipPath id="c5"><path d="M 424 440 L 424 198 A 94 94 0 0 1 612 198 L 612 440 Z"/></clipPath><clipPath id="c6"><path d="M 518 440 L 518 198 A 94 94 0 0 1 706 198 L 706 440 Z"/></clipPath><clipPath id="c7"><path d="M 612 440 L 612 198 A 94 94 0 0 1 800 198 L 800 440 Z"/></clipPath><clipPath id="c8"><path d="M 706 440 L 706 198 A 94 94 0 0 1 894 198 L 894 440 Z"/></clipPath><pattern id="mtp0" width="5" height="5" patternUnits="userSpaceOnUse">
+        <circle cx="2.5" cy="2.5" r="1.5" fill="#3E2B20"/></pattern>
+      <linearGradient id="mtg0" x1="0%" y1="0%" x2="0%" y2="60%"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="0.3" stop-color="#fff" stop-opacity="1"/><stop offset="0.5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <mask id="mtm0"><rect x="-40" y="-40" width="3000" height="3000" fill="url(#mtg0)"/></mask>
+<pattern id="mtp1" width="5" height="5" patternUnits="userSpaceOnUse">
+        <circle cx="2.5" cy="2.5" r="1" fill="#3E2B20"/></pattern>
+      <linearGradient id="mtg1" x1="0%" y1="0%" x2="0%" y2="60%"><stop offset="0.22" stop-color="#fff" stop-opacity="0"/><stop offset="0.42" stop-color="#fff" stop-opacity="1"/><stop offset="0.62" stop-color="#fff" stop-opacity="1"/><stop offset="0.78" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <mask id="mtm1"><rect x="-40" y="-40" width="3000" height="3000" fill="url(#mtg1)"/></mask>
+<pattern id="mtp2" width="5" height="5" patternUnits="userSpaceOnUse">
+        <circle cx="2.5" cy="2.5" r="0.55" fill="#3E2B20"/></pattern>
+      <linearGradient id="mtg2" x1="0%" y1="0%" x2="0%" y2="60%"><stop offset="0.55" stop-color="#fff" stop-opacity="0"/><stop offset="0.75" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient>
+      <mask id="mtm2"><rect x="-40" y="-40" width="3000" height="3000" fill="url(#mtg2)"/></mask>
+</defs>
+
+        <rect width="800" height="440" fill="url(#chao)"/>
+        <rect x="-20" y="-20" width="840" height="480" fill="url(#mtp0)" mask="url(#mtm0)" opacity="0.2"/><rect x="-20" y="-20" width="840" height="480" fill="url(#mtp1)" mask="url(#mtm1)" opacity="0.2"/><rect x="-20" y="-20" width="840" height="480" fill="url(#mtp2)" mask="url(#mtm2)" opacity="0.2"/>
+        <g clip-path="url(#c0)"><g clip-path="url(#c1)">
+          <rect width="800" height="440" fill="#4B5D45" opacity="0.4"/></g></g><g clip-path="url(#c1)"><g clip-path="url(#c2)">
+          <rect width="800" height="440" fill="#4B5D45" opacity="0.4"/></g></g><g clip-path="url(#c2)"><g clip-path="url(#c3)">
+          <rect width="800" height="440" fill="#4B5D45" opacity="0.4"/></g></g><g clip-path="url(#c3)"><g clip-path="url(#c4)">
+          <rect width="800" height="440" fill="#4B5D45" opacity="0.4"/></g></g><g clip-path="url(#c4)"><g clip-path="url(#c5)">
+          <rect width="800" height="440" fill="#4B5D45" opacity="0.4"/></g></g><g clip-path="url(#c5)"><g clip-path="url(#c6)">
+          <rect width="800" height="440" fill="#4B5D45" opacity="0.4"/></g></g><g clip-path="url(#c6)"><g clip-path="url(#c7)">
+          <rect width="800" height="440" fill="#4B5D45" opacity="0.4"/></g></g><g clip-path="url(#c7)"><g clip-path="url(#c8)">
+          <rect width="800" height="440" fill="#4B5D45" opacity="0.4"/></g></g>
+        <path d="M -46 440 L -46 198 A 94 94 0 0 1 142 198 L 142 440 Z" fill="none" stroke="#3E2B20" stroke-opacity="0.55" stroke-width="1.4"/><path d="M 48 440 L 48 198 A 94 94 0 0 1 236 198 L 236 440 Z" fill="none" stroke="#3E2B20" stroke-opacity="0.55" stroke-width="1.4"/><path d="M 142 440 L 142 198 A 94 94 0 0 1 330 198 L 330 440 Z" fill="none" stroke="#3E2B20" stroke-opacity="0.55" stroke-width="1.4"/><path d="M 236 440 L 236 198 A 94 94 0 0 1 424 198 L 424 440 Z" fill="none" stroke="#3E2B20" stroke-opacity="0.55" stroke-width="1.4"/><path d="M 330 440 L 330 198 A 94 94 0 0 1 518 198 L 518 440 Z" fill="none" stroke="#3E2B20" stroke-opacity="0.55" stroke-width="1.4"/><path d="M 424 440 L 424 198 A 94 94 0 0 1 612 198 L 612 440 Z" fill="none" stroke="#3E2B20" stroke-opacity="0.55" stroke-width="1.4"/><path d="M 518 440 L 518 198 A 94 94 0 0 1 706 198 L 706 440 Z" fill="none" stroke="#3E2B20" stroke-opacity="0.55" stroke-width="1.4"/><path d="M 612 440 L 612 198 A 94 94 0 0 1 800 198 L 800 440 Z" fill="none" stroke="#3E2B20" stroke-opacity="0.55" stroke-width="1.4"/><path d="M 706 440 L 706 198 A 94 94 0 0 1 894 198 L 894 440 Z" fill="none" stroke="#3E2B20" stroke-opacity="0.55" stroke-width="1.4"/>
+        <rect x="0" y="104" width="800" height="1" fill="#3E2B20" opacity="0.24"/>
+
+  <filter id="grao" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/></filter>
+  <rect width="800" height="440" filter="url(#grao)" opacity="0.13" style="mix-blend-mode:overlay"/>
+</svg>
